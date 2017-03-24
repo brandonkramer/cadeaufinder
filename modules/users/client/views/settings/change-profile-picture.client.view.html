@@ -10,6 +10,9 @@
               Select Image <input type="file" nv-file-select uploader="uploader">
           </span>
         </div>
+        <div class="text-center form-group" data-ng-show="user.profileImageURL != 'modules/users/img/profile/default.png'">
+          <button class="btn btn-primary" data-ng-click="deleteProfilePicture();">Delete picture</button>
+        </div>
         <div class="text-center form-group" data-ng-show="uploader.queue.length">
           <button class="btn btn-primary" data-ng-click="uploadProfilePicture();">Upload</button>
           <button class="btn btn-default" data-ng-click="cancelUpload();">Cancel</button>

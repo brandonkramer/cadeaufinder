@@ -1,0 +1,17 @@
+
+> v8-debug@0.7.7 preinstall /usr/local/lib/node_modules/.staging/v8-debug-731a4dbd
+> node -e 'process.exit(0)'
+
+
+> v8-profiler@5.6.5 preinstall /usr/local/lib/node_modules/.staging/v8-profiler-19dd1dab
+> node -e 'process.exit(0)'
+
+
+> v8-debug@0.7.7 install /usr/local/lib/node_modules/grunt-node-inspector/node_modules/v8-debug
+> node-pre-gyp install --fallback-to-build
+
+  CXX(target) Release/obj.target/debug/src/debug.o
+Failed to execute '/usr/local/bin/node /usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js build --fallback-to-build --module=/usr/local/lib/node_modules/grunt-node-inspector/node_modules/v8-debug/build/debug/v0.7.7/node-v51-darwin-x64/debug.node --module_name=debug --module_path=/usr/local/lib/node_modules/grunt-node-inspector/node_modules/v8-debug/build/debug/v0.7.7/node-v51-darwin-x64' (1)
+/usr/local/lib
+└── (empty)
+

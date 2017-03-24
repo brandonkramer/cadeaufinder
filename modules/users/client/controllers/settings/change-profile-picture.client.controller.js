@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('ChangeProfilePictureController', ['$scope', '$timeout', '$window', 'Authentication', 'FileUploader',
-  function ($scope, $timeout, $window, Authentication, FileUploader) {
+angular.module('users').controller('ChangeProfilePictureController', ['$scope', '$http', '$timeout', '$window', 'Authentication', 'FileUploader',
+  function ($scope, $http, $timeout, $window, Authentication, FileUploader) {
     $scope.user = Authentication.user;
     $scope.imageURL = $scope.user.profileImageURL;
 
@@ -53,6 +53,18 @@ angular.module('users').controller('ChangeProfilePictureController', ['$scope', 
       // Show error message
       $scope.error = response.message;
     };
+
+    $scope.deleteProfilePicture = function () {
+      // Clear messages
+      $scope.success = $scope.error = null;
+      $scope.imageURL  = 'modules/users/img/profile/default.png';
+      $http.post('/api/users/picture', $scope.imageURL).success(function (response) {
+        // If successful show success message and clear form
+        $scope.success = true;
+      }).error(function (response) {
+        $scope.error = response.message;
+      });
+    }
 
     // Change user profile picture
     $scope.uploadProfilePicture = function () {

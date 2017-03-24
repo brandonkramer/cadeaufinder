@@ -20,10 +20,11 @@
 }
 .header-profile-image {
   opacity: 0.8;
-  height: 28px;
-  width: 28px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   margin-right: 5px;
+  margin-top: -5px;
 }
 .open .header-profile-image,
 a:hover .header-profile-image {

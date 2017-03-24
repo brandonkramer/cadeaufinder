@@ -7,7 +7,9 @@ var _ = require('lodash'),
   defaultAssets = require('./config/assets/default'),
   testAssets = require('./config/assets/test'),
   fs = require('fs'),
-  path = require('path');
+  path = require('path'),
+  grunt = require('grunt'),
+  less = require('grunt-contrib-less');
 
 module.exports = function (grunt) {
   // Project Configuration
