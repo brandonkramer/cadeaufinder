@@ -90,11 +90,19 @@ body {
 .column .block .block-label {
   position: absolute;
   dislay: inline-block;
+  font-size: 20px;
+  font-weight: 200;
+  color: #C1C1C1;
   right: 0;
   bottom: 0;
-  background: #EEEEEE;
+  background: #F7F7F7;
   padding: 10px;
   transition: all 0.3s ease;
+}
+.column .block .block-label span:nth-child(2) {
+  font-size: 12px;
+  top: -5px;
+  position: relative;
 }
 .column .block .block-img {
   width: 100%;

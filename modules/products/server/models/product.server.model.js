@@ -36,6 +36,16 @@ var ProductSchema = new Schema({
     required: 'Please fill Product description',
     trim: true
   },
+  price: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  url: {
+    type: String,
+    default: '',
+    trim: true
+  },
   tags: {
     type: String,
     default: '',

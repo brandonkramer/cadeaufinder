@@ -33,7 +33,7 @@
                <button class="btn btn-default" data-ng-click="cancelUpload();">Cancel</button>
              </div>
              <div data-ng-show="success" class="text-center text-success">
-               <strong>Profile Picture Changed Successfully</strong>
+               <strong>Product Picture Changed Successfully</strong>
              </div>
              <div data-ng-show="error" class="text-center text-danger">
                <strong data-ng-bind="error"></strong>
@@ -57,6 +57,22 @@
           <textarea name="description" type="text" ng-model="vm.product.description" id="description" class="form-control" placeholder="Description" required></textarea>
           <div ng-messages="vm.form.productForm.description.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Product description is required.</p>
+          </div>
+        </div>
+        <!-- price -->
+        <div class="form-group" show-errors>
+          <label class="control-label" for="price">Price</label>
+          <input name="price" type="text" ng-model="vm.product.price" id="price" class="form-control" placeholder="Price" required>
+          <div ng-messages="vm.form.productForm.price.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Price is required.</p>
+          </div>
+        </div>
+        <!-- url -->
+        <div class="form-group" show-errors>
+          <label class="control-label" for="url">Affiliate URL</label>
+          <input name="url" type="text" ng-model="vm.product.url" id="url" class="form-control" placeholder="Affiliate URL" required>
+          <div ng-messages="vm.form.productForm.url.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Url is required.</p>
           </div>
         </div>
         <!-- tags -->

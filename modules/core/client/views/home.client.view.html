@@ -14,13 +14,11 @@
         <!-- block content -->
         <div class="block-content">
           <h4 data-ng-bind="product.name"></h4>
-          <p data-ng-bind="product.description | limitTo: 150"></p>
+          <p>{{product.description | limitTo: 150}}..</p>
         </div>
         <!-- block label -->
         <div class="block-label">
-          <small class="list-group-item-text">
-            Posted on <span data-ng-bind="product.created | date:'mediumDate'"></span>
-          </small>
+          <span>${{product.price | split : '.':0}}</span><span>{{product.price | split : '.':1}}</span>
         </div>
       </div>
     </div>

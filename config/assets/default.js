@@ -27,7 +27,8 @@ module.exports = {
       'modules/*/client/css/*.css'
     ],
     less: [
-      'modules/*/client/less/*.less'
+      'modules/*/client/less/*.less',
+      'modules/*/client/less/*/*.less'
     ],
     sass: [
       'modules/*/client/scss/*.scss'
@@ -36,6 +37,7 @@ module.exports = {
       'modules/core/client/app/config.js',
       'modules/core/client/app/init.js',
       'modules/*/client/*.js',
+      'modules/core/client/*/*.js',
       'modules/*/client/**/*.js'
     ],
     views: ['modules/*/client/views/**/*.html']
