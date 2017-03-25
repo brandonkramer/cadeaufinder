@@ -1,19 +1,44 @@
-// settings
-///////////////////////////////////////////// colors
+///////////////////////////////////////////// main settings
 //-- text colors
 @color-font-primary: #1d1d1d;; // dark
 @color-font-secondary: #6E6E6E; // normal
 @color-font-tertiary: #C1C1C1; // subtle
 //-- brand colors
-@color-brand-1: #486CFF;
+@color-brand-1: #486CFF; // blue color
 //--global
 @global-transition: 0.3s ease;
+@global-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.08);
 
 
-// tools
 
 // base
-@import "3-base/base.page.less";
+body {
+   background: #F7F7F7;
+   font-family: 'Montserrat', sans-serif;
+   font-size: 16px;
+   color: @color-font-secondary;
+
+   ////// font smoothing
+   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// animations
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// page
+.page-home {
+  animation: fadeIn both ease 0.6s;
+}
 
 // components
 
@@ -25,7 +50,11 @@
   font-size: 14px;
   letter-spacing: -0.5px;
   font-weight: 600;
-
+  animation: fadeIn both ease 0.4s;
+  .container {
+    animation: fadeIn both ease 0.6s;
+    animation-delay: 0.3s;
+  }
   a {
     color: @color-font-secondary;
     text-shadow: transparent!important;
@@ -39,12 +68,12 @@
       content: "";
       background: url('../img/brand/logo.svg');
       background-size: cover;
-      height: 40px;
-      width: 40px;
+      height: 35px;
+      width: 35px;
       display: block;
       float: left;
       position: relative;
-      top: -10px;
+      top: -6px;
       margin-right: 10px;
       left: 0;
     }
@@ -64,6 +93,12 @@
     color: #fff!important;
     text-shadow: transparent!important;
   }
+  &-primary {
+    border: 0!important;
+    background: @color-brand-1!important;
+    color: #fff!important;
+    text-shadow: transparent!important;
+  }
   &-sm {
     padding: 13px 28px!important;
     font-size: 16px;
@@ -72,7 +107,7 @@
 
 ////////////?/////////////////////////////// list-group
 .list-group {
-  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .10);
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .10); -moz-box-shadow: 0 2px 8px rgba(0, 0, 0, .10);
   box-shadow: 0 2px 8px rgba(0, 0, 0, .10);
   border: 0!important;
   &-item {
@@ -87,7 +122,7 @@
     padding: 15px 15px;
     height: 50px;
     border-radius: 2px!important;
-    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .10);
+    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .10); -moz-box-shadow: 0 2px 8px rgba(0, 0, 0, .10);
     box-shadow: 0 2px 8px rgba(0, 0, 0, .10);
     border: 0!important;
     margin-top: 5px;
@@ -111,7 +146,23 @@
       width: 23.5%;
       padding: 30px;
       margin: 0.5%;
-      height: 350px;
+    }
+  }
+  &.two {
+    .block {
+      width: 49%;
+      padding: 30px;
+      margin: 0.5%;
+      @media (max-width: 900px) {
+        width: 100%;
+        margin: 0;
+      }
+    }
+  }
+  &.one {
+    .block {
+      width: 100%;
+      padding: 30px;
     }
   }
   // main block styling
@@ -127,10 +178,29 @@
       background: #F7F7F7;
       padding: 10px;
       transition: all @global-transition;
+      height: 50px;
       span:nth-child(2){
         font-size: 12px;
         top: -5px;
         position: relative;
+      }
+    }
+    .block-link {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 15px;
+      height: 50px;
+      width: 100%;
+      border-top: 1px solid #f7f7f7;
+      color: @color-font-primary;
+      font-size: 12px;
+      font-weight: 200;
+      opacity: 0;
+      transition: all @global-transition;
+      i {
+        margin-left: 4px;
+        font-size: 11px;
       }
     }
     .block-img {
@@ -143,6 +213,7 @@
       background-position: 50% 40%!important;
       background-size: 200px!important;
       transition: all @global-transition;
+        cursor: pointer;
     }
     .block-content {
       position: relative;
@@ -151,6 +222,7 @@
       height: 100%;
       opacity: 0;
       transition: all @global-transition;
+        cursor: pointer;
     }
     // hover state
     &:hover {
@@ -161,19 +233,12 @@
       .block-content {
         opacity: 1;
       }
+      .block-link {
+        opacity: 1;
+      }
       .block-img {
         background-position: 50% 30%!important;
       }
     }
   }
-}
-
-
-
-////////////?/////////////////////////////// product
-.product {
-  background: #fff;
-  position: relative;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.08);
-
 }

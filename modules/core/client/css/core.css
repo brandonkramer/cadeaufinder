@@ -1,6 +1,20 @@
-.content {
-  margin-top: 50px;
+
+@media (min-width: 768px) {
+  .content {
+    margin-top: 50px;
+    margin-bottom: 150px;
+  }
 }
+
+@media (max-width: 768px) {
+  .content {
+    margin-top: 10px;
+  }
+  .content .container {
+    padding: 0!important;
+  }
+}
+
 .undecorated-link:hover {
   text-decoration: none;
 }

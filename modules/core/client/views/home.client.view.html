@@ -1,4 +1,4 @@
-<section data-ng-controller="HomeController">
+<section data-ng-controller="HomeController" class="page-home">
 
   <!-- products -->
   <section data-ng-controller="ProductsShowController" data-ng-init="find()">
@@ -6,20 +6,25 @@
       <h1>Products</h1>
     </div>
 
-    <div class="column four">
+    <div class="column four product-list">
       <!-- block -->
-      <div class="block product" data-ng-repeat="product in products" data-ui-sref="products.view({productId: product._id})">
+      <div class="block product" data-ng-repeat="product in products">
         <!-- block img -->
-        <div style="background: url('{{product.image}}')" class="block-img"></div>
+        <div style="background: url('{{product.image}}')" class="block-img" data-ui-sref="products.view({productId: product._id})"></div>
         <!-- block content -->
-        <div class="block-content">
+        <div class="block-content" data-ui-sref="products.view({productId: product._id})">
           <h4 data-ng-bind="product.name"></h4>
           <p>{{product.description | limitTo: 150}}..</p>
         </div>
         <!-- block label -->
         <div class="block-label">
-          <span>${{product.price | split : '.':0}}</span><span>{{product.price | split : '.':1}}</span>
+          <span>€{{product.price | split : '.':0}}</span><span>{{product.price | split : '.':1}}</span>
         </div>
+        <a href="{{product.url}}" target="_blank">
+        <div class="block-link">
+          Koop via Bol <i class="fa fa-external-link" aria-hidden="true"></i>
+        </div>
+        </a>
       </div>
     </div>
 

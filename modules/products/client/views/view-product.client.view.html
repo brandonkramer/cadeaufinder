@@ -1,14 +1,89 @@
-<section>
-  <div class="page-header">
-    <img data-ng-src="{{vm.product.image}}" alt="{{vm.product.name}}" class="img-thumbnail product-picture" style="float: left; margin: 20px;">
-    <h1 data-ng-controller="CategoriesShowController" data-ng-init="find()">
-      <span>{{vm.product.name}}</span>
-      <small data-ng-repeat="category in categories | filter: { _id: vm.product.category }">{{category.name}}</small>
-    </h1>
-    <p ng-bind="vm.product.description"></p>
-    <BR />
-    <p>Tags: <strong>{{vm.product.tags}}</strong></p>
+<section class="product product-standalone">
+  <div class="column two">
+    <div class="block text-center">
+      <img data-ng-src="{{vm.product.image}}" alt="{{vm.product.name}}">
+    </div>
+    <div class="block">
+      <div class="product-info">
+        <h1 data-ng-controller="CategoriesShowController" data-ng-init="find()">
+          <span>{{vm.product.name}}</span><BR />
+          <small data-ng-repeat="category in categories | filter: { _id: vm.product.category }">{{category.name}}</small>
+        </h1>
+        <p>{{vm.product.description}}</p>
+        <BR />
+        <a class="btn btn-primary" href="{{vm.product.url}}" target="_blank">
+          <span>€</span><span>{{vm.product.price | split : '.':0}}</span><span>{{vm.product.price | split : '.':1}}</span>
+          <span>Koop via Bol</span></i></a>
+      </div>
+    </div>
   </div>
+  <div class="column one">
+    <div class="block text-center">
+      <h2 data-ng-controller="CategoriesShowController" data-ng-init="find()">
+        <span>Gerelateerde producten</span>
+      </h2>
+    </div>
+  </div>
+  <!-- related products -->
+  <div class="column one">
+      <div class="product-related" data-ng-controller="ProductsShowController" data-ng-init="find()">
+          <div class="column product-list">
+            <!-- block -->
+            <div class="block product" data-ng-repeat="product in products">
+              <!-- block img -->
+              <div style="background: url('{{product.image}}')" class="block-img" data-ui-sref="products.view({productId: product._id})"></div>
+              <!-- block content -->
+              <div class="block-content" data-ui-sref="products.view({productId: product._id})">
+                <h4 data-ng-bind="product.name"></h4>
+                <p>{{product.description | limitTo: 150}}..</p>
+              </div>
+              <!-- block label -->
+              <div class="block-label">
+                <span>€{{product.price | split : '.':0}}</span><span>{{product.price | split : '.':1}}</span>
+              </div>
+              <a href="{{product.url}}" target="_blank">
+              <div class="block-link">
+                Buy on Bol <i class="fa fa-external-link" aria-hidden="true"></i>
+              </div>
+              </a>
+            </div>
+          </div>
+
+           <!-- no products block -->
+          <div class="alert alert-warning text-center" data-ng-if="products.$resolved && !products.length">
+            No products yet, why don't you <a data-ui-sref="products.create">create one</a>?
+          </div>
+
+      </div>
+  </div>
+  <!-- more products -->
+  <div class="more-products" data-ng-controller="ProductsShowController" data-ng-init="find()">
+    <div class="column two product-list">
+      <!-- block -->
+      <div class="block product" data-ng-repeat="product in products | limitTo: 6">
+        <!-- block img -->
+        <div style="background: url('{{product.image}}')" class="block-img" data-ui-sref="products.view({productId: product._id})"></div>
+        <!-- block content -->
+        <div class="block-content" data-ui-sref="products.view({productId: product._id})">
+          <h4 data-ng-bind="product.name"></h4>
+          <p>{{product.description | limitTo: 150}}..</p>
+        </div>
+        <!-- block label -->
+        <div class="block-label">
+          <span>€{{product.price | split : '.':0}}</span><span>{{product.price | split : '.':1}}</span>
+        </div>
+
+      </div>
+    </div>
+
+     <!-- no products block -->
+    <div class="alert alert-warning text-center" data-ng-if="products.$resolved && !products.length">
+      No products yet, why don't you <a data-ui-sref="products.create">create one</a>?
+    </div>
+  </div>
+</section>
+
+<div class="admin-buttons">
   <div class="pull-right"
        ng-show="vm.product.isCurrentUserOwner">
     <a class="btn btn-primary"
@@ -19,15 +94,4 @@
       <i class="glyphicon glyphicon-trash"></i>
     </a>
   </div>
-  <small>
-    <em class="text-muted">
-      Posted on
-      <span ng-bind="vm.product.created | date:'mediumDate'"></span>
-      by
-      <span ng-if="vm.product.user"
-            ng-bind="vm.product.user.displayName"></span>
-      <span ng-if="!vm.product.user">Deleted User</span>
-    </em>
-  </small>
-  <p class="lead" ng-bind="vm.product.content"></p>
-</section>
+</div>
