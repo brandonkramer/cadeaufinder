@@ -3,8 +3,8 @@
 module.exports = {
   app: {
     title: 'Cadeaufinder',
-    description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
-    keywords: 'mongodb, express, angularjs, node.js, mongoose, passport',
+    description: 'Zoek een cadeau in 5 minuten',
+    keywords: 'cadeau, cadeaus, voor hem, voor haar, voor kids',
     googleAnalyticsTrackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'GOOGLE_ANALYTICS_TRACKING_ID'
   },
   port: process.env.PORT || 3000,

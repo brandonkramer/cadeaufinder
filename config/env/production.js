@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  secure: true, 
+  secure: true,
   port: process.env.PORT || 8443,
   db: {
     uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean',
@@ -22,8 +22,8 @@ module.exports = {
     }
   },
   facebook: {
-    clientID: process.env.FACEBOOK_ID || 'APP_ID',
-    clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
+    clientID: process.env.FACEBOOK_ID || '1369629379763236',
+    clientSecret: process.env.FACEBOOK_SECRET || '4a5100e0b9e295b11affce2cfb7ccc98',
     callbackURL: '/api/auth/facebook/callback'
   },
   twitter: {
