@@ -22,7 +22,7 @@ module.exports = {
     }
   },
   app: {
-    title: defaultEnvConfig.app.title + ' - Development Environment'
+    title: defaultEnvConfig.app.title + ' - Verzameling van premium cadeaus'
   },
   facebook: {
     clientID: process.env.FACEBOOK_ID || '1369629379763236',
