@@ -19,6 +19,8 @@
     vm.save = save;
 
 
+
+
     // Create file uploader instance
     $scope.uploader = new FileUploader({
       url: 'api/products/picture'

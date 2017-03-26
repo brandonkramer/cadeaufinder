@@ -1,4 +1,4 @@
-<div class="container" data-ng-controller="HeaderController">
+<div class="container" data-ng-controller="HeaderController"  my-enter="toggleSearch()">
   <div class="navbar-header">
     <button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
       <span class="sr-only">Toggle navigation</span>
@@ -15,7 +15,12 @@
       </li> -->
       <li class="divider-vertical"></li>
       <li data-ui-sref-active="active">
-        <a class="btn btn-default btn-sm" data-ui-sref="authentication.signin">Sign In</a>
+        <a class="btn btn-default btn-sm" data-ui-sref="authentication.signin">Inloggen</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a class="btn-search" ng-click="toggleSearch()"><i class="fa fa-search" aria-hidden="true"></i> zoeken</a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
@@ -54,6 +59,44 @@
         <a ng-switch-default data-ui-sref="{{item.state}}" data-ng-bind="item.title"></a>
       </li>
     </ul>
-
   </nav>
+  <!-- search block -->
+  <section class="pageSearch" ng-esc="toggleSearch()" ng-class="{'pageSearchActive': searchIsActive}" data-ng-controller="ProductsShowController" data-ng-init="find()">
+    <div>
+      <h2>Zoek door te typen. Klik ESC om af te sluiten.</h2>
+      <input autofocus type="text" id="query" ng-model="query" placeholder="Waar ben je naar op zoek?" />
+      <i class="close-button glyphicon glyphicon-remove" ng-click="toggleSearch()"></i>
+    </div>
+    <div>
+      <div class="container">
+        <div class="column four product-list">
+          <!-- block -->
+          <div class="block product" data-ng-repeat="product in products | filter: { tags : filterTag, name : query}">
+            <!-- block img -->
+            <div style="background: url('{{product.image}}')" class="block-img" data-ui-sref="products.view({productId: product._id})"></div>
+            <!-- block content -->
+            <div class="block-content" data-ui-sref="products.view({productId: product._id})">
+              <h4 data-ng-bind="product.name"></h4>
+              <p>{{product.description | limitTo: 150}}..</p>
+            </div>
+            <!-- block label -->
+            <div class="block-label">
+              <span>€{{product.price | split : '.':0}}</span><span>{{product.price | split : '.':1}}</span>
+            </div>
+            <a href="{{product.url}}" target="_blank">
+            <div class="block-link">
+              Koop via Bol <i class="fa fa-external-link" aria-hidden="true"></i>
+            </div>
+            </a>
+          </div>
+        </div>
+
+         <!-- no products block -->
+        <div class="alert alert-warning text-center" data-ng-if="products.$resolved && !products.length">
+          No products yet, why don't you <a data-ui-sref="products.create">create one</a>?
+        </div>
+      </div>
+    </div>
+  </section>
+
 </div>

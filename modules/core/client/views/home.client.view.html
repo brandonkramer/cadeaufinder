@@ -2,13 +2,22 @@
 
   <!-- products -->
   <section data-ng-controller="ProductsShowController" data-ng-init="find()">
-    <div class="page-header">
-      <h1>Products</h1>
+    <div class="page-header text-center">
+      <h1>Vind het perfecte cadeau in 5 minuten </h1>
+      <!-- filter -->
+
+      <select ng-model="filterTag">
+        <option value="voor hem">Voor hem</option>
+        <option value="voor haar">Voor haar</option>
+      </select>
+       <div>
+         <a ng-click="resetTagFilter()" class="filter-reset">Reset Filter</a>
+       </div>
     </div>
 
     <div class="column four product-list">
       <!-- block -->
-      <div class="block product" data-ng-repeat="product in products">
+      <div class="block product" data-ng-repeat="product in products | filter: { tags : filterTag, name : query}">
         <!-- block img -->
         <div style="background: url('{{product.image}}')" class="block-img" data-ui-sref="products.view({productId: product._id})"></div>
         <!-- block content -->

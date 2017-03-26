@@ -6,7 +6,8 @@ module.exports = {
       css: [
         'public/lib/bootstrap/dist/css/bootstrap.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
-        'public/lib/font-awesome/css/font-awesome.min.css'
+        'public/lib/font-awesome/css/font-awesome.min.css',
+        'public/lib/angular-ui-select/dist/select.css'
       ],
       js: [
         'public/lib/angular/angular.min.js',
@@ -18,7 +19,10 @@ module.exports = {
         'public/lib/angular-file-upload/angular-file-upload.min.js',
         'public/lib/ng-file-upload/FileAPI.min.js',
         'public/lib/ng-file-upload/angular-file-upload-shim.min.js',
-        'public/lib/ng-file-upload/angular-file-upload.min.js'
+        'public/lib/ng-file-upload/angular-file-upload.min.js',
+        'public/lib/ngSanitize/angular-sanitize.js',
+        'public/lib/angular-ui-select/dist/select.min.js',
+        'public/lib/angularjs-dropdown-multiselect/src/angularjs-dropdown-multiselect.js'
       ]
     },
     css: 'public/dist/application.min.css',
