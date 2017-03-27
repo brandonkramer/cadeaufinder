@@ -27,15 +27,15 @@
 
     <div class="column four product-list">
       <!-- block -->
-      <div class="block product" data-ng-repeat="product in products | filter: tagFilters" >
-        {{currentTags}}
+      <div class="block product" data-ng-repeat="product in products" >
+        <!-- {{currentTags}} -->
         <!-- block img -->
         <div style="background: url('{{product.image}}')" class="block-img" data-ui-sref="products.view({productId: product._id})"></div>
         <!-- block content -->
         <div class="block-content" data-ui-sref="products.view({productId: product._id})">
           <h4 data-ng-bind="product.name"></h4>
           <p>{{product.description | limitTo: 150}}..</p>
-          <p>{{product.tags | customSplitString}}</p>
+          <!-- <p>{{product.tags | customSplitString}}</p> -->
         </div>
         <!-- block label -->
         <div class="block-label">
