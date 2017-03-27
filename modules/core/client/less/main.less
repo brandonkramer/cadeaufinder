@@ -1,8 +1,9 @@
 ///////////////////////////////////////////// main settings
 //-- text colors
-@color-font-primary: #1d1d1d;; // dark
+@color-font-primary: #1d1d1d; // dark
 @color-font-secondary: #6E6E6E; // normal
 @color-font-tertiary: #C1C1C1; // subtle
+@color-font-light: #B9B9B9; // subtle
 //-- brand colors
 @color-brand-1: #486CFF; // blue color
 @color-brand-2: #F7F7F7; // gray bg color
@@ -17,6 +18,10 @@
 ///////////////////////////////////////////// theme
 @import "theme/theme.animations.less";
 
+.txt--primary { color: @color-font-primary; }
+.txt--secondary { color: @color-font-secondary; }
+.txt--tertiary { color: @color-font-tertiary; }
+.txt--light { color: @color-font-light; }
 
 // page styling
 .page-home {
@@ -95,6 +100,25 @@
     cursor: pointer;
     &:hover {
       opacity: 1;
+    }
+  }
+}
+
+.pageFilter {
+  text-align: left;
+  position: fixed;
+  left: 30px;
+  top: 100px;
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    list-style: none;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 4px 0;
+    &.active {
+      color: @color-font-primary!important;
     }
   }
 }

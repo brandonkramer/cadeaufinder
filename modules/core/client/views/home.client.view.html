@@ -5,25 +5,37 @@
     <div class="page-header text-center">
       <h1>Vind het perfecte cadeau in 5 minuten </h1>
       <!-- filter -->
+      <div class="pageFilter">
+        <p class="txt--primary">Filter</p>
 
-      <select ng-model="filterTag">
-        <option value="voor hem">Voor hem</option>
-        <option value="voor haar">Voor haar</option>
-      </select>
-       <div>
-         <a ng-click="resetTagFilter()" class="filter-reset">Reset Filter</a>
-       </div>
+
+        <ul class="txt--tertiary">
+        <li ng-class="{'active': thistagIsActive}" ng-repeat="filterTag in filterTags" ng-click="$parent.filterTagChoice = $parent.filterTagChoice ? '' : filterTag.tag; toggleTag(); thistagIsActive = !thistagIsActive">{{filterTag.label}}</li>
+
+          <li ng-class="{'active': thistagisActive}">0 - 20€</li>
+          <li ng-class="{'active': thistagIsActive}" ng-click="toggleTag()">20€ - 50€</li>
+          <li ng-class="{'active': thistagIsActive}" ng-click="toggleTag()">50€ - 100€</li>
+          <li ng-class="{'active': thistagIsActive}" ng-click="toggleTag()">100€ - 500€</li>
+        </ul>
+
+         <div>
+           <a ng-click="resetTagFilter()" class="filter-reset">Reset Filter</a>
+         </div>
+      </div>
+
     </div>
 
     <div class="column four product-list">
       <!-- block -->
-      <div class="block product" data-ng-repeat="product in products | filter: { tags : filterTag, name : query}">
+      <div class="block product" data-ng-repeat="product in products | filter: tagFilters" >
+        {{currentTags}}
         <!-- block img -->
         <div style="background: url('{{product.image}}')" class="block-img" data-ui-sref="products.view({productId: product._id})"></div>
         <!-- block content -->
         <div class="block-content" data-ui-sref="products.view({productId: product._id})">
           <h4 data-ng-bind="product.name"></h4>
           <p>{{product.description | limitTo: 150}}..</p>
+          <p>{{product.tags | customSplitString}}</p>
         </div>
         <!-- block label -->
         <div class="block-label">

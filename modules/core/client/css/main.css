@@ -148,6 +148,18 @@ h6 .small,
     opacity: 1;
   }
 }
+.txt--primary {
+  color: #1d1d1d;
+}
+.txt--secondary {
+  color: #6E6E6E;
+}
+.txt--tertiary {
+  color: #C1C1C1;
+}
+.txt--light {
+  color: #B9B9B9;
+}
 .page-home {
   animation: fadeIn both ease 0.6s;
 }
@@ -227,6 +239,24 @@ h6 .small,
 }
 .pageSearch .close-button:hover {
   opacity: 1;
+}
+.pageFilter {
+  text-align: left;
+  position: fixed;
+  left: 30px;
+  top: 100px;
+}
+.pageFilter ul {
+  padding: 0;
+  margin: 0;
+}
+.pageFilter li {
+  list-style: none;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 4px 0;
+}
+.pageFilter li.active {
+  color: #1d1d1d !important;
 }
 .navbar {
   background: #fff;
