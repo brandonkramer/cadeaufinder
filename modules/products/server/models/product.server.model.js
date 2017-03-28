@@ -46,11 +46,7 @@ var ProductSchema = new Schema({
     default: '',
     trim: true
   },
-  tags: {
-    type: String,
-    default: '',
-    trim: true
-  },
+  tags: [String],
   slug: {
     type: String,
     default: '',

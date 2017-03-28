@@ -19,14 +19,10 @@
     vm.save = save;
 
 
-
-
     // Create file uploader instance
     $scope.uploader = new FileUploader({
       url: 'api/products/picture'
     });
-
-
 
     // Set file uploader image filter
     $scope.uploader.filters.push({
@@ -111,7 +107,10 @@
         });
       }
       console.log($scope.uploader);
+      var tags = product.tags;
+      product.tags = tags.split(", ");
 
+      console.log('Tags after split: ' + product.tags);
 
       ///////////////////////// upload
       // Clear messages

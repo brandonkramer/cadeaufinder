@@ -10,7 +10,7 @@
 
 
         <ul class="txt--tertiary">
-        <li ng-class="{'active': thistagIsActive}" ng-repeat="filterTag in filterTags" ng-click="$parent.filterTagChoice = $parent.filterTagChoice ? '' : filterTag.tag; toggleTag(); thistagIsActive = !thistagIsActive">{{filterTag.label}}</li>
+        <li ng-class="{'active': thistagIsActive}" ng-repeat="filterTag in filterTags" ng-click="toggleTag(filterTag.tag); thistagIsActive = !thistagIsActive">{{filterTag.label}}</li>
 
           <li ng-class="{'active': thistagisActive}">0 - 20€</li>
           <li ng-class="{'active': thistagIsActive}" ng-click="toggleTag()">20€ - 50€</li>
@@ -25,17 +25,16 @@
 
     </div>
 
-    <div class="column four product-list">
+    <div class="column four product-list" ng-show="selectedTags.length == 0">
       <!-- block -->
       <div class="block product" data-ng-repeat="product in products" >
-        <!-- {{currentTags}} -->
+        {{currentTags}}
         <!-- block img -->
         <div style="background: url('{{product.image}}')" class="block-img" data-ui-sref="products.view({productId: product._id})"></div>
         <!-- block content -->
         <div class="block-content" data-ui-sref="products.view({productId: product._id})">
           <h4 data-ng-bind="product.name"></h4>
           <p>{{product.description | limitTo: 150}}..</p>
-          <!-- <p>{{product.tags | customSplitString}}</p> -->
         </div>
         <!-- block label -->
         <div class="block-label">
@@ -48,6 +47,30 @@
         </a>
       </div>
     </div>
+
+    <div class="column four product-list" ng-show="selectedTags.length != 0">
+      <!-- block -->
+      <div class="block product" data-ng-repeat="product in products | filter:{tags:selectedTags}:containsComparator" >
+        {{currentTags}}
+        <!-- block img -->
+        <div style="background: url('{{product.image}}')" class="block-img" data-ui-sref="products.view({productId: product._id})"></div>
+        <!-- block content -->
+        <div class="block-content" data-ui-sref="products.view({productId: product._id})">
+          <h4 data-ng-bind="product.name"></h4>
+          <p>{{product.description | limitTo: 150}}..</p>
+        </div>
+        <!-- block label -->
+        <div class="block-label">
+          <span>€{{product.price | split : '.':0}}</span><span>{{product.price | split : '.':1}}</span>
+        </div>
+        <a href="{{product.url}}" target="_blank">
+        <div class="block-link">
+          Koop via Bol <i class="fa fa-external-link" aria-hidden="true"></i>
+        </div>
+        </a>
+      </div>
+    </div>
+
 
      <!-- no products block -->
     <div class="alert alert-warning text-center" data-ng-if="products.$resolved && !products.length">

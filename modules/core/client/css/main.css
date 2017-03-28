@@ -254,6 +254,7 @@ h6 .small,
   list-style: none;
   border-bottom: 1px solid #e6e6e6;
   padding: 4px 0;
+  font-weight: 200;
 }
 .pageFilter li.active {
   color: #1d1d1d !important;

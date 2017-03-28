@@ -18,6 +18,7 @@ exports.create = function(req, res) {
   var user = req.user;
   product.user = req.user;
 
+
       product.save(function(err) {
         if (err) {
           return res.status(400).send({
